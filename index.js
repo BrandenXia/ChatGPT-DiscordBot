@@ -23,29 +23,25 @@ for (const file of commandFiles) {
 	}
 }
 
+// read all files in the events directory
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+// loop through the event files
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	// bind the event to the client
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
+
 // when the client is ready, record to console
-client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
-});
+// client.once(Events.ClientReady, c => {
+// 	console.log(`Ready! Logged in as ${c.user.tag}`);
+// });
 
 // login with token
 client.login(token);
-
-// respond to slash commands
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isCommand()) return;
-
-	const command = client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.warn(`Command ${interaction.commandName} not found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
