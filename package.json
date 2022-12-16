@@ -12,6 +12,7 @@
   "dependencies": {
     "chatgpt": "^2.3.3",
     "discord.js": "^14.7.1",
-    "puppeteer": "^19.4.0"
+    "puppeteer": "^19.4.0",
+    "winston": "^3.8.2"
   }
 }

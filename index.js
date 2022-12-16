@@ -1,7 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const logger = require('./utils/logger.js');
+
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { token } = require('./config.json');
+
 
 // create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages] });
@@ -17,9 +20,10 @@ for (const file of commandFiles) {
 	const command = require(filePath);
 	// set a new item in the Collection
 	if ('data' in command && 'execute' in command) {
+		logger.info(`Registering command ${command.data.name}`);
 		client.commands.set(command.data.name, command);
 	} else {
-		console.warn(`Command ${file} is missing "data" or "execute" property.`);
+		logger.warn(`Command ${file} is missing "data" or "execute" property.`)
 	}
 }
 
@@ -32,8 +36,10 @@ for (const file of eventFiles) {
 	const event = require(filePath);
 	// bind the event to the client
 	if (event.once) {
+		logger.info(`Binding event ${file} to client.once()`);
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
+		logger.info(`Binding event ${file} to client.on()`);
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
