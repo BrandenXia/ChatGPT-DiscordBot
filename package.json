@@ -4,15 +4,14 @@
   "description": "ChatGPT bot using discord.js",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "deploy-commands": "node deploy-commands.js"
+    "start": "node .",
+    "deploy": "node deploy-commands.js"
   },
   "author": "BrandenXia",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.29.0"
-  },
   "dependencies": {
-    "discord.js": "^14.7.1"
+    "chatgpt": "^2.3.3",
+    "discord.js": "^14.7.1",
+    "puppeteer": "^19.4.0"
   }
 }

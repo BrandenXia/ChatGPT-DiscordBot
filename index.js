@@ -1,10 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Events, GatewayIntentBits, Collection} = require('discord.js');
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { token } = require('./config.json');
 
 // create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages] });
 
 // create a new commands collection
 client.commands = new Collection();
@@ -37,11 +37,6 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
-
-// when the client is ready, record to console
-// client.once(Events.ClientReady, c => {
-// 	console.log(`Ready! Logged in as ${c.user.tag}`);
-// });
 
 // login with token
 client.login(token);
