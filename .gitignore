@@ -3,6 +3,7 @@ node_modules
 
 # project
 config.json
+logs
 
 # editor
 .idea

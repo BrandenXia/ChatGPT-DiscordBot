@@ -3,6 +3,7 @@ const { createLogger, format, transports, level} = require('winston')
 module.exports = createLogger({
     transports: [
         new transports.Console({
+            // output to console with debug level, in simple format, colorized
             level: 'debug',
             format: format.combine(
                 format.timestamp({
@@ -14,10 +15,12 @@ module.exports = createLogger({
             )
         }),
         new transports.File({
+            // output to logs/error.log with error level, in json format
             level: 'error',
             filename: 'logs/error.log'
         }),
         new transports.File({
+            // output to logs/combined.log with info level, in json format
             filename: 'logs/combined.log'
         })
     ]

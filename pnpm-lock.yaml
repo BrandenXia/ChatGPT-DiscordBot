@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  chatgpt: ^2.3.3
+  chatgpt: ^3.1.0
   discord.js: ^14.7.1
-  puppeteer: ^19.4.0
+  puppeteer: ^19.4.1
   winston: ^3.8.2
 
 dependencies:
-  chatgpt: 2.3.3_puppeteer@19.4.1
+  chatgpt: 3.1.0_puppeteer@19.4.1
   discord.js: 14.7.1
   puppeteer: 19.4.1
   winston: 3.8.2
@@ -236,8 +236,8 @@ packages:
     resolution: {integrity: sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==}
     dev: false
 
-  /chatgpt/2.3.3_puppeteer@19.4.1:
-    resolution: {integrity: sha512-SwkdYZnPUZxGruztC09GLvOsNd6ci/s41P/+i0PnhKy8RXl+4DwlabBD8veyOgbYjC6S7MAnTrfKHFaLxCAHlg==}
+  /chatgpt/3.1.0_puppeteer@19.4.1:
+    resolution: {integrity: sha512-mYQM2xb0ENEmPT6f6hQKWBxh+xBo3ygrJ0Vk/EFyrKDg7rHuGjOp1qBX+oIyljWmggxCucR+BE7MkIFPWOqIUQ==}
     engines: {node: '>=18'}
     peerDependencies:
       puppeteer: '*'
@@ -245,10 +245,13 @@ packages:
       delay: 5.0.0
       eventsource-parser: 0.0.5
       expiry-map: 2.0.0
+      html-to-md: 0.8.3
       p-timeout: 6.0.0
       puppeteer: 19.4.1
       puppeteer-extra: 3.3.4_puppeteer@19.4.1
+      puppeteer-extra-plugin-recaptcha: 3.6.6_puppeteer-extra@3.3.4
       puppeteer-extra-plugin-stealth: 2.11.1_puppeteer-extra@3.3.4
+      random: 4.1.0
       remark: 14.0.2
       strip-markdown: 5.0.0
       uuid: 9.0.0
@@ -531,6 +534,10 @@ packages:
   /has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
+    dev: false
+
+  /html-to-md/0.8.3:
+    resolution: {integrity: sha512-Va+bB1YOdD6vMRDue9/l7YxbERgwOgsos4erUDRfRN6YE0B2Wbbw8uAj6xZJk9A9vrjVy7mG/WLlhDw6RXfgsA==}
     dev: false
 
   /https-proxy-agent/5.0.1:
@@ -1053,6 +1060,26 @@ packages:
       - utf-8-validate
     dev: false
 
+  /puppeteer-extra-plugin-recaptcha/3.6.6_puppeteer-extra@3.3.4:
+    resolution: {integrity: sha512-SVbmL+igGX8m0Qg9dn85trWDghbfUCTG/QUHYscYx5XgMZVVb0/v0a6MqbPdHoKmBx5BS2kLd6rorMlncMcXdw==}
+    engines: {node: '>=9.11.2'}
+    peerDependencies:
+      playwright-extra: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      playwright-extra:
+        optional: true
+      puppeteer-extra:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      merge-deep: 3.0.3
+      puppeteer-extra: 3.3.4_puppeteer@19.4.1
+      puppeteer-extra-plugin: 3.2.2_puppeteer-extra@3.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /puppeteer-extra-plugin-stealth/2.11.1_puppeteer-extra@3.3.4:
     resolution: {integrity: sha512-n0wdC0Ilc9tk5L6FWLyd0P2gT8b2fp+2NuB+KB0oTSw3wXaZ0D6WNakjJsayJ4waGzIJFCUHkmK9zgx5NKMoFw==}
     engines: {node: '>=8'}
@@ -1175,6 +1202,13 @@ packages:
       - utf-8-validate
     dev: false
 
+  /random/4.1.0:
+    resolution: {integrity: sha512-6Ajb7XmMSE9EFAMGC3kg9mvE7fGlBip25mYYuSMzw/uUSrmGilvZo2qwX3RnTRjwXkwkS+4swse9otZ92VjAtQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      seedrandom: 3.0.5
+    dev: false
+
   /readable-stream/3.6.0:
     resolution: {integrity: sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==}
     engines: {node: '>= 6'}
@@ -1246,6 +1280,10 @@ packages:
   /safe-stable-stringify/2.4.1:
     resolution: {integrity: sha512-dVHE6bMtS/bnL2mwualjc6IxEv1F+OCUpA46pKUj6F8uDbUM0jCCulPqRNPSnWwGNKx5etqMjZYdXtrm5KJZGA==}
     engines: {node: '>=10'}
+    dev: false
+
+  /seedrandom/3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
     dev: false
 
   /shallow-clone/0.1.2:
