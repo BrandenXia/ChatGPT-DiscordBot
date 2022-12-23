@@ -2,6 +2,8 @@ const logger = require('../utils/logger.js');
 
 const { Events } = require('discord.js');
 
+const { OpenAI_Email, OpenAI_Password } =  require('../config.json');
+
 
 module.exports = {
     name: Events.MessageCreate,
@@ -13,6 +15,19 @@ module.exports = {
         // if the message doesn't start with the prefix, return
         if (message.content.startsWith("!chat")) {
             const messageContent = message.content.replace("!chat", "");
+            await message.reply("I'm thinking...");
+
+            const { ChatGPTAPIBrowser } = await import('chatgpt');
+            const chatGPT = await new ChatGPTAPIBrowser({
+                email: OpenAI_Email,
+                password: OpenAI_Password,
+            });
+            logger.info(`OpenAI Authenticated`);
+            await chatGPT.initSession();
+            logger.info(`OpenAI Session Initialized`);
+            const response = await chatGPT.sendMessage(messageContent);
+            await message.reply(response);
+            logger.info(`OpenAI Message Sent`);
         }
     }
 }

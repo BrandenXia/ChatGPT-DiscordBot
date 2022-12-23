@@ -1,4 +1,4 @@
-const { createLogger, format, transports, level} = require('winston')
+const { createLogger, format, transports } = require('winston')
 
 module.exports = createLogger({
     transports: [

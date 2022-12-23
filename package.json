@@ -10,7 +10,7 @@
   "author": "BrandenXia",
   "license": "ISC",
   "dependencies": {
-    "chatgpt": "^3.1.0",
+    "chatgpt": "^3.3.2",
     "discord.js": "^14.7.1",
     "puppeteer": "^19.4.1",
     "winston": "^3.8.2"
